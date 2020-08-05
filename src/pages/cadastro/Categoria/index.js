@@ -3,6 +3,7 @@ import PageDefault from '../../../components/PageDefault';
 import { Link } from 'react-router-dom';
 import FormField from '../../../components/components/FormField';
 import { Button, FormGroup, Grid } from '@material-ui/core';
+import routes from '../../../components/components/Routes';
 
 function CadastroCategoria() {
 
@@ -87,7 +88,7 @@ function CadastroCategoria() {
 				})}
 			</ul>
 
-			<Link to="/">Ir para Home</Link>
+			<Link to={routes.home}>Ir para Home</Link>
 		</PageDefault >
 	);
 }
