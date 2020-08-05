@@ -2,24 +2,36 @@ import React from 'react';
 import Menu from '../Menu/Menu';
 import Footer from '../Footer';
 
-import styled from 'styled-components';
+import { Container, CssBaseline } from '@material-ui/core';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
 
-const Main = styled.main`
-	background-color: var(--black);
-	color: var(--white);
-	flex: 1;
-	padding: 50px 5% 0 5%;
-`;
+const theme = createMuiTheme({
+	palette: {
+		type: 'dark',
+		primary: {
+			main: '#ec1b2a'
+		}
+	},
+});
+
+const style = {
+	container: {
+		color: 'white',
+		backgroundColor: 'black',
+		flex: 1
+	}
+};
 
 function PageDefault({ children }) {
 	return (
-		<>
+		<ThemeProvider theme={theme}>
+			<CssBaseline />
 			<Menu />
-			<Main>
+			<Container style={style.container}>
 				{children}
-			</Main>
+			</Container>
 			<Footer />
-		</>
+		</ThemeProvider>
 	);
 }
 
