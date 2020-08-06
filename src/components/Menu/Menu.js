@@ -1,22 +1,23 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import logo from "../../assets/img/logo.png";
-import "./Menu.css";
-import { Button } from "@material-ui/core";
-import routes from "../components/Routes";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Button } from '@material-ui/core';
 
-function Menu(props) {
-	return (
-		<nav className="Menu" >
-			<Link to={routes.home} >
-				<img className="Logo" src={logo} alt="Logo ELIFLIX"></img>
-			</Link>
+import './Menu.css';
+import logo from '../../assets/img/logo.png';
+import routes from '../components/Routes';
 
-			<Button variant="contained" component={Link} to={routes.cadastroVideo}>
-				Novo Vídeo
-			</Button>
-		</nav>
-	);
+function Menu() {
+  return (
+    <nav className="Menu">
+      <Link to={routes.home}>
+        <img className="Logo" src={logo} alt="Logo ELIFLIX" />
+      </Link>
+
+      <Button className="ButtonLink" variant="contained" component={Link} to={routes.cadastroVideo}>
+        Novo Vídeo
+      </Button>
+    </nav>
+  );
 }
 
 export default Menu;
