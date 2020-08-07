@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Grid } from '@material-ui/core';
 
@@ -14,6 +14,7 @@ function CadastroCategoria() {
   };
   const [categoria, setCategoria] = useState(initialValues);
   const [categorias, setCategorias] = useState([]);
+  const url = 'http://localhost:8080/categorias';
 
   function setValue(key, value) {
     setCategoria({
@@ -35,6 +36,15 @@ function CadastroCategoria() {
     ]);
     setCategoria(initialValues);
   }
+
+  useEffect(() => {
+    fetch(url).then(async (resposta) => {
+      const categoriasJson = await resposta.json();
+      setCategorias([
+        ...categoriasJson,
+      ]);
+    });
+  }, []);
 
   return (
     <PageDefault>
@@ -85,6 +95,10 @@ function CadastroCategoria() {
           </Grid>
         </Grid>
       </form>
+
+      {categorias.length === 0 && (
+        <div>Carregando...</div>
+      )}
 
       <ul>
         {categorias.map((cat) => (
