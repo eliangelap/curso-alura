@@ -14,7 +14,9 @@ function CadastroCategoria() {
   };
   const [categoria, setCategoria] = useState(initialValues);
   const [categorias, setCategorias] = useState([]);
-  const url = 'http://localhost:8080/categorias';
+  const URL = window.location.hostname.includes('localhost')
+    ? 'http://localhost:8080/categorias'
+    : 'https://app-eliflix.herokuapp.com/categorias';
 
   function setValue(key, value) {
     setCategoria({
@@ -38,7 +40,7 @@ function CadastroCategoria() {
   }
 
   useEffect(() => {
-    fetch(url).then(async (resposta) => {
+    fetch(URL).then(async (resposta) => {
       const categoriasJson = await resposta.json();
       setCategorias([
         ...categoriasJson,
